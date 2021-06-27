@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+
+  db:
+    container_name: spring-boot-practice-db
+    image: postgres:12-alpine
+    environment:
+      - POSTGRES_DB=spring-boot-practice-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+
+  elasticsearch:
+    container_name: spring-boot-practice-elasticsearch
+    image: elasticsearch:5-alpine
+    environment:
+      - discovery.type=single-node
+    ports:
+      - 9200:9200
+      - 9300:9300
+
+  redis:
+    container_name: spring-boot-practice-redis
+    image: redis:alpine
+    ports:
+      - 6379:6379
